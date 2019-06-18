@@ -1,0 +1,67 @@
+//
+//  PrefixHeader.pch
+//  新闻
+//
+//  Created by gyh on 16/2/29.
+//  Copyright © 2016年 apple. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+
+#import "UIImageView+WebCache.h"
+#import "AFNetworking.h"
+#import "MJExtension.h"
+#import "UIView+Frame.h"
+#import "NSString+Extension.h"
+#import "GYHHeadeRefreshController.h"
+#import "ThemeManager.h"
+#import "MBProgressHUD+Extion.h"
+#import "UIImageView+WebCache.h"
+#import "MJRefresh.h"
+#import "BaseEngine.h"
+#import "BaseViewController.h"
+#import "AppConfig.h"
+#import "UIColor+Extension.h"
+
+
+#define SCREEN_WIDTH                    ([UIScreen mainScreen].bounds.size.width)
+#define SCREEN_HEIGHT                   ([UIScreen mainScreen].bounds.size.height)
+#define theApp                          ((AppDelegate *)[[UIApplication sharedApplication] delegate])
+#define theWindow                       [[UIApplication sharedApplication] delegate].window
+#define RGBA(r,g,b,a)                   [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
+#define HEXColor(colorString)           [UIColor colorWithHexString:colorString]
+
+
+///判断是否是ios7
+#define isIOS7 (DeviceSystemMajorVersion()< 7 ? NO:YES)
+///判断是否是ios8
+#define isIOS8 (DeviceSystemMajorVersion()< 8 ? NO:YES)
+
+#define isIOS9 (DeviceSystemMajorVersion()< 9 ? NO:YES)
+
+#define isIOS10 (DeviceSystemMajorVersion()< 10 ? NO:YES)
+
+
+#define IS_IPHONE4 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) : NO)
+#define IS_IPHONE5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
+#define IS_IPHONE6 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? (CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) || CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size)) : NO)
+#define IS_IPHONE6PLUS ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? (CGSizeEqualToSize(CGSizeMake(1125, 2001), [[UIScreen mainScreen] currentMode].size) || CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size)) : NO)
+
+
+#if __has_feature(objc_arc)
+#define IMP_BLOCK_SELF(type) __weak type *block_self=self;
+#else
+#define IMP_BLOCK_SELF(type) __block type *block_self=self;
+#endif
+
+#ifdef DEBUG
+#define DLog(...) NSLog(@"%s(第%d行) %@", __PRETTY_FUNCTION__, __LINE__, [NSString stringWithFormat:__VA_ARGS__])
+#else
+#define DLog(...)
+#endif
+
+
+
+#endif /* PrefixHeader_pch */
